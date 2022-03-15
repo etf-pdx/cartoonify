@@ -1,5 +1,6 @@
 # Cartoonify
 Make images and videos into cartoons!
+Read the [paper here](https://github.com/praefervidus/cartoonify/blob/master/paper/cartoonify.pdf)!
 
 ## Setting Up
 You'll need a Python 3 Anaconda environment set up.
