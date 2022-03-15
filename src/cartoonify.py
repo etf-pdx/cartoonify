@@ -6,6 +6,7 @@ from reduce_colors import reduce_colors_knn
 from canny_edges import detect_canny_edges
 from moviepy.editor import ImageClip, VideoFileClip
 
+VERSION = "1.0.0"
 
 def cartoonify(reduced_colors, canny_edges, gradient_mask, border_color=[0,0,0]):
     rows = reduced_colors.shape[0]
@@ -49,9 +50,10 @@ def cartoonify_video(frame):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--version", action="version", version=('%(prog)s'+f' {VERSION}'))
     parser.add_argument("input", type=str, help="input file path")
-    parser.add_argument("-o", "--output", type=str, help="output file path - defaults to ../cartoon_input.png", default="")
     parser.add_argument("-v", "--video", action="store_true", help="input file is a video")
+    parser.add_argument("-o", "--output", type=str, help="output file path - defaults to ../cartoon_input.png", default="")
     args = parser.parse_args()
 
     input_path = str(args.input)
@@ -80,4 +82,4 @@ if __name__ == "__main__":
         # ===== save generated cartoon
         cv2.imwrite(filename=output_path, img=(cartoon.clip(0.0, 255.0)))
 
-    print(f'Successfully Cartoonified {input_path} to {output_path}')
+        print(f'Successfully Cartoonified {input_path} to {output_path}')
